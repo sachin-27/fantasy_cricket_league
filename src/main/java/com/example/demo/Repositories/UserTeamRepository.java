@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UserTeamRepository extends JpaRepository<UserTeam, Integer> {
 
-    public List<UserTeam> findAllByUserOrderByUser_team_pointsDesc(User user);
+    public List<UserTeam> findAllByUserOrderByUserTeamPointsDesc(User user);
 
     public List<UserTeam> findAll();
 

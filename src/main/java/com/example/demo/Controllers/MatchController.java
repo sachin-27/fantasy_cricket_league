@@ -19,10 +19,16 @@ public class MatchController {
         return allMatches;
     }
 
-    @RequestMapping(value = "/score", method = RequestMethod.GET, params = "matchId")
+    @RequestMapping(value = "/livescore", method = RequestMethod.GET, params = "matchId")
     public String getMatchScore(int matchId){
-        String matchScore = matchService.getMatchScore(matchId);
-        return matchScore;
+        String matchLiveScore = matchService.getMatchLiveScore(matchId);
+        return matchLiveScore;
+    }
+
+    @RequestMapping(value = "summary", method = RequestMethod.GET, params = "matchId")
+    public String getMatchSummary(int matchId){
+        String matchSummary = matchService.getMatchSummary(matchId);
+        return matchSummary;
     }
 
     @RequestMapping(value = "/players", method = RequestMethod.GET, params = "matchId")
