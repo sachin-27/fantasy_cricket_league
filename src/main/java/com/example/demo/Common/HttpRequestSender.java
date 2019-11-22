@@ -1,29 +1,46 @@
 package com.example.demo.Common;
 
-import java.net.URI;
-import java.net.http.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
 public class HttpRequestSender {
 
-    private static final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .build();
-
-    private String apiKey = "0Kva5FncbGXzLXiFZ4BbwVKLMHN2";
-
-    public static String getResponse(String url) {
-        HttpRequest request = HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create(url))
-                .build();
-        HttpResponse<String> response = null;
+    public static String getResponse(String urlString, Map<String, String> params) {
         try {
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (Exception e){
+            URL url = new URL(urlString);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setDoOutput(true);
+            DataOutputStream out = new DataOutputStream(con.getOutputStream());
+            out.writeBytes(ParameterStringBuilder.getParamsString(params));
+            out.flush();
+            out.close();
 
+            int status = con.getResponseCode();
+
+            Reader streamReader = null;
+
+            if (status > 299) {
+                streamReader = new InputStreamReader(con.getErrorStream());
+            } else {
+                streamReader = new InputStreamReader(con.getInputStream());
+            }
+
+            BufferedReader in = new BufferedReader(streamReader);
+            String inputLine;
+            StringBuffer content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+
+            con.disconnect();
+
+            return content.toString();
+        } catch(Exception e){
+            return null;
         }
-
-        return response.body();
     }
-
 }

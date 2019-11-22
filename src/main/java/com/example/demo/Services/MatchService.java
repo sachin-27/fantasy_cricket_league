@@ -3,55 +3,58 @@ package com.example.demo.Services;
 import com.example.demo.Common.HttpRequestSender;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class MatchService {
 
-    private String addApiKeyAsParameter = "?apikey=0Kva5FncbGXzLXiFZ4BbwVKLMHN2";
-
-    public String getCurrentAndUpcomingMatches(){
-        String url = "http://cricapi.com/api/matches/";
-        url = url + addApiKeyAsParameter;
-        String matches = HttpRequestSender.getResponse(url);
+    public String getCurrentAndUpcomingMatches() {
+        String url = "http://cricapi.com/api/matches";
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("apikey", "0Kva5FncbGXzLXiFZ4BbwVKLMHN2");
+        String matches = HttpRequestSender.getResponse(url, parameters);
         return matches;
     }
 
     // probably don't need this
     public String getOldMatches(){
         String url = "http://cricapi.com/api/cricket";
-        url = url + addApiKeyAsParameter;
-        String matches = HttpRequestSender.getResponse(url);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("apikey", "0Kva5FncbGXzLXiFZ4BbwVKLMHN2");
+        String matches = HttpRequestSender.getResponse(url, parameters);
         return matches;
     }
 
 
-    public String getMatchLiveScore(int matchid){
+    public String getMatchLiveScore(int matchId){
         String url = "http://cricapi.com/api/cricketScore";
-        url = url + addApiKeyAsParameter;
-        url = url + addMatchIdAsParameter(matchid);
-        String matchScore = HttpRequestSender.getResponse(url);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("apikey", "0Kva5FncbGXzLXiFZ4BbwVKLMHN2");
+        parameters.put("unique_id", Integer.toString(matchId));
+        String matchScore = HttpRequestSender.getResponse(url, parameters);
         return matchScore;
     }
 
     public String getMatchSummary(int matchId){
         String url = "http://cricapi.com/api/fantasySummary";
-        url = url + addApiKeyAsParameter;
-        url = url + addMatchIdAsParameter(matchId);
-        String matchSummary = HttpRequestSender.getResponse(url);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("apikey", "0Kva5FncbGXzLXiFZ4BbwVKLMHN2");
+        parameters.put("unique_id", Integer.toString(matchId));
+        String matchSummary = HttpRequestSender.getResponse(url, parameters);
         return matchSummary;
     }
 
-    public String getMatchPlayers(int matchid){
+    public String getMatchPlayers(int matchId){
         String url = "http://cricapi.com/api/fantasySquad";
-        url = url + addApiKeyAsParameter;
-        url = url + addMatchIdAsParameter(matchid);
-        String matchPlayers = HttpRequestSender.getResponse(url);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("apikey", "0Kva5FncbGXzLXiFZ4BbwVKLMHN2");
+        parameters.put("unique_id", Integer.toString(matchId));
+        String matchPlayers = HttpRequestSender.getResponse(url, parameters);
         return matchPlayers;
     }
 
     /////////////////////  Helper Methods //////////////////////////////////
 
-    private String addMatchIdAsParameter(int matchId){
-        String value = "&unique_id=" + Integer.toString(matchId);
-        return value;
-    }
 }
