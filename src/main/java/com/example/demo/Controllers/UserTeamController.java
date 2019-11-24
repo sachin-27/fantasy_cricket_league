@@ -28,7 +28,7 @@ public class UserTeamController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public UserTeam addUserTeam(String userTeamName, int userId){
+    public UserTeam addUserTeam(String userTeamName, Long userId){
         UserTeam userTeam = new UserTeam();
         userTeam.setUserTeamName(userTeamName);
         userTeam.setUser(userService.getUserByUserId(userId));

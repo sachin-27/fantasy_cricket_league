@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserTeamPlayersRepository extends JpaRepository<UserTeamPlayers, Integer> {
+public interface UserTeamPlayersRepository extends JpaRepository<UserTeamPlayers, Long> {
 
     public List<UserTeamPlayers> findAllByUserTeam(UserTeam userTeam);
 

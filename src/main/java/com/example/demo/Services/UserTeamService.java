@@ -22,7 +22,7 @@ public class UserTeamService {
         return insertedUserTeam;
     }
 
-    public List<UserTeam> getUserTeamsByUser(int userId){
+    public List<UserTeam> getUserTeamsByUser(Long userId){
         User user = userService.getUserByUserId(userId);
         List<UserTeam> allTeamsOfCurrentUser = userTeamRepository.findAllByUserOrderByUserTeamPointsDesc(user);
         return allTeamsOfCurrentUser;

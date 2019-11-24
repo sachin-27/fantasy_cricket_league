@@ -10,7 +10,7 @@ public class UserTeam implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_team_id")
-    private int userTeamId;
+    private Long userTeamId;
 
     @Column(name = "user_team_name")
     private String userTeamName;
@@ -38,11 +38,11 @@ public class UserTeam implements Serializable {
 
     }
 
-    public int getUserTeamId() {
+    public Long getUserTeamId() {
         return userTeamId;
     }
 
-    public void setUserTeamId(int userTeamId) {
+    public void setUserTeamId(Long userTeamId) {
         this.userTeamId = userTeamId;
     }
 

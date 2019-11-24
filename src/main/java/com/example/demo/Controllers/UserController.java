@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, params = "userId")
-    public User getUserByUserId(int userId){
+    public User getUserByUserId(Long userId){
         User user = userService.getUserByUserId(userId);
         return user;
     }
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public boolean deleteuser(User user){
+    public boolean deleteUser(User user){
         boolean isDeleted = userService.deleteUser(user);
 
         if(isDeleted){

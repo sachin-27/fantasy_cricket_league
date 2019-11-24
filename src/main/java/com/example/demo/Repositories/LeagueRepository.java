@@ -7,10 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LeagueRepository extends JpaRepository<League, Integer> {
+public interface LeagueRepository extends JpaRepository<League, Long> {
 
     public List<League> findAll();
 
-    public List<League> findAllByLeagueId(int leagueId);
+    public List<League> findAllByLeagueId(Long leagueId);
+
+    public League findByLeagueId(Long leagueId);
 
 }

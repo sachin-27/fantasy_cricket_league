@@ -10,7 +10,7 @@ public class League implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "league_id")
-    private int leagueId;
+    private long leagueId;
 
     @Column(name = "league_name")
     private String leagueName;
@@ -19,16 +19,19 @@ public class League implements Serializable {
 
     }
 
-    public League(int league_id, String league_name){
-        this.leagueId = league_id;
-        this.leagueName = league_name;
+    @Override
+    public String toString() {
+        return "League{" +
+                "leagueId=" + leagueId +
+                ", leagueName='" + leagueName + '\'' +
+                '}';
     }
 
-    public int getLeagueId() {
+    public long getLeagueId() {
         return leagueId;
     }
 
-    public void setLeagueId(int leagueId) {
+    public void setLeagueId(long leagueId) {
         this.leagueId = leagueId;
     }
 
@@ -38,13 +41,5 @@ public class League implements Serializable {
 
     public void setLeagueName(String leagueName) {
         this.leagueName = leagueName;
-    }
-
-    @Override
-    public String toString() {
-        return "League{" +
-                "leagueId=" + leagueId +
-                ", leagueName='" + leagueName + '\'' +
-                '}';
     }
 }

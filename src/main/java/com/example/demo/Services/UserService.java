@@ -28,7 +28,7 @@ public class UserService {
         return user;
     }
 
-    public User getUserByUserId(int userId){
+    public User getUserByUserId(Long userId){
         User user = userRepository.findByUserId(userId);
         return user;
     }
