@@ -22,11 +22,16 @@ public class UserTeam implements Serializable {
     @Column(name = "user_team_points")
     private int userTeamPoints;
 
-    public UserTeam(int user_teamId, String userTeamName, User user, int userTeamPoints){
+    @OneToOne
+    @JoinColumn(name = "user_team_league_id", referencedColumnName = "league_id")
+    private League league;
+
+    public UserTeam(int user_teamId, String userTeamName, User user, int userTeamPoints, League league){
         this.userTeamId = userTeamId;
         this.userTeamName = userTeamName;
         this.user = user;
         this.userTeamPoints = userTeamPoints;
+        this.league = league;
     }
 
     public UserTeam(){
@@ -57,6 +62,14 @@ public class UserTeam implements Serializable {
         this.user = user;
     }
 
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
+    }
+
     public int getUserTeamPoints() {
         return userTeamPoints;
     }
@@ -72,6 +85,7 @@ public class UserTeam implements Serializable {
                 ", userTeamName='" + userTeamName + '\'' +
                 ", user=" + user +
                 ", userTeamPoints=" + userTeamPoints +
+                ", league=" + league +
                 '}';
     }
 }
