@@ -13,7 +13,7 @@ public class UserTeamPlayers implements Serializable {
     private Long userTeamPlayerId;
 
     @Column(name = "player_id")
-    private int playerId;
+    private Long playerId;
 
     @OneToOne
     @JoinColumn(name = "user_team_id", referencedColumnName = "user_team_id")
@@ -22,7 +22,7 @@ public class UserTeamPlayers implements Serializable {
     @Column(name = "player_name")
     private String playerName;
 
-    public UserTeamPlayers(Long userTeamPlayerId, int playerId, UserTeam userTeam, String playerName){
+    public UserTeamPlayers(Long userTeamPlayerId, Long playerId, UserTeam userTeam, String playerName){
         this.userTeamPlayerId = userTeamPlayerId;
         this.playerId = playerId;
         this.userTeam = userTeam;
@@ -41,11 +41,11 @@ public class UserTeamPlayers implements Serializable {
         this.userTeamPlayerId = userTeamPlayerId;
     }
 
-    public int getPlayerId() {
+    public Long getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(int playerId) {
+    public void setPlayerId(Long playerId) {
         this.playerId = playerId;
     }
 

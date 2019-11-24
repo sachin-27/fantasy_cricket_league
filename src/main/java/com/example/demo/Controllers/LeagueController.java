@@ -38,6 +38,12 @@ public class LeagueController {
         return league;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public List<League> getAllLeagues(){
+        List<League> allLeagues = leagueService.getAllLeagues();
+        return allLeagues;
+    }
+
     @RequestMapping(method = RequestMethod.DELETE)
     public boolean deleteLeague(@RequestBody League league){
         boolean isDeleted = leagueService.deleteLeague(league);

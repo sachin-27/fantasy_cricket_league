@@ -5,6 +5,8 @@ import com.example.demo.Repositories.LeagueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LeagueService {
 
@@ -19,6 +21,11 @@ public class LeagueService {
     public League getLeagueByLeagueId(Long leagueId){
         League league = leagueRepository.findByLeagueId(leagueId);
         return league;
+    }
+
+    public List<League> getAllLeagues(){
+        List<League> allLeagues = leagueRepository.findAll();
+        return allLeagues;
     }
 
     public League updateLeague(League league){
