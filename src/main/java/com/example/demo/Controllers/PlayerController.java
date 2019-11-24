@@ -1,7 +1,11 @@
 package com.example.demo.Controllers;
 
+import com.example.demo.Beans.UserTeamPlayers;
 import com.example.demo.Services.PlayerService;
+import com.example.demo.Services.UserTeamService;
+import com.example.demo.dto.UserTeamPlayerDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +16,9 @@ public class PlayerController {
 
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    UserTeamService userTeamService;
 
     @RequestMapping(method = RequestMethod.GET, params = "playerName")
     public String getPlayers(String playerName){
@@ -24,5 +31,4 @@ public class PlayerController {
         String playerDetails = playerService.getPlayerDetails(pid);
         return playerDetails;
     }
-
 }

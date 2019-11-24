@@ -19,6 +19,7 @@ public class UserService {
     public User addUser(User user){
         String hashedPassword = loginService.hashPassword(user.getUserPassword());
         user.setUserPassword(hashedPassword);
+        System.out.println(user);
         User insertedUser = userRepository.save(user);
         return insertedUser;
     }

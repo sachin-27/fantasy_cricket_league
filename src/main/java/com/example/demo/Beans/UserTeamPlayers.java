@@ -19,14 +19,10 @@ public class UserTeamPlayers implements Serializable {
     @JoinColumn(name = "user_team_id", referencedColumnName = "user_team_id")
     private UserTeam userTeam;
 
-    @Column(name = "player_name")
-    private String playerName;
-
     public UserTeamPlayers(Long userTeamPlayerId, Long playerId, UserTeam userTeam, String playerName){
         this.userTeamPlayerId = userTeamPlayerId;
         this.playerId = playerId;
         this.userTeam = userTeam;
-        this.playerName = playerName;
     }
 
     public UserTeamPlayers(){
@@ -63,15 +59,6 @@ public class UserTeamPlayers implements Serializable {
                 "userTeamPlayerId=" + userTeamPlayerId +
                 ", playerId=" + playerId +
                 ", userTeam=" + userTeam +
-                ", playerName='" + playerName + '\'' +
                 '}';
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
     }
 }

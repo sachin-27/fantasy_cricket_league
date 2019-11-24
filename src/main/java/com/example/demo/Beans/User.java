@@ -24,7 +24,6 @@ public class User implements Serializable {
     @Column(name = "user_points")
     private int userPoints;
 
-
     public Long getUserId() {
         return userId;
     }
@@ -65,16 +64,14 @@ public class User implements Serializable {
         this.userPoints = userPoints;
     }
 
-    public User(Long userId, String userName, String userPassword, String userEmail, int userPoints){
-        this.userId = userId;
+    public User() {
+    }
+
+    public User(String userName, String userPassword, String userEmail, int userPoints) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
         this.userPoints = userPoints;
-    }
-
-    public User(){
-
     }
 
     @Override

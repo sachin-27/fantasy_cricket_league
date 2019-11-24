@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Beans.League;
 import com.example.demo.Beans.User;
 import com.example.demo.Beans.UserTeam;
 import com.example.demo.Repositories.UserTeamRepository;
@@ -17,9 +18,17 @@ public class UserTeamService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private LeagueService leagueService;
+
     public UserTeam addUserTeam(UserTeam userTeam){
         UserTeam insertedUserTeam = userTeamRepository.save(userTeam);
         return insertedUserTeam;
+    }
+
+    public UserTeam getUserTeamByUserTeamId(Long userTeamId){
+        UserTeam userTeam = userTeamRepository.findByUserTeamId(userTeamId);
+        return userTeam;
     }
 
     public List<UserTeam> getUserTeamsByUser(Long userId){
@@ -31,6 +40,12 @@ public class UserTeamService {
     public List<UserTeam> getAllUserTeams(){
         List<UserTeam> allUserTeams = userTeamRepository.findAll();
         return allUserTeams;
+    }
+
+    public List<UserTeam> getUserTeamsByLeague(Long leagueId){
+        League league = leagueService.getLeagueByLeagueId(leagueId);
+        List<UserTeam> userTeamsInLeague = userTeamRepository.findAllByLeagueOrderByUserTeamPointsDesc(league);
+        return userTeamsInLeague;
     }
 
     public UserTeam updateUserTeam(UserTeam userTeam){

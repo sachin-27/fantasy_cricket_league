@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Beans.User;
 import com.example.demo.Services.UserService;
+import com.example.demo.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,11 @@ public class UserController {
     /////////////////////////////////////// User Methods ///////////////////////////////////////////
 
     @RequestMapping(method = RequestMethod.POST)
-    public User addUser(String userName, String userPassword, String userEmail){
+    public User addUser(@RequestBody UserDto userDto){
         User user = new User();
-        user.setUserName(userName);
-        user.setUserPassword(userPassword);
-        user.setUserEmail(userEmail);
+        user.setUserName(userDto.getUserName());
+        user.setUserPassword(userDto.getPassword());
+        user.setUserEmail(userDto.getEmail());
         user.setUserPoints(0);
         User insertedUser = userService.addUser(user);
 
@@ -56,7 +57,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public boolean deleteUser(User user){
+    public boolean deleteUser(@RequestBody User user){
         boolean isDeleted = userService.deleteUser(user);
 
         if(isDeleted){

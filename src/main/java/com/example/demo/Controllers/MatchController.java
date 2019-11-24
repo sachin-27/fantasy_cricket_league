@@ -31,7 +31,7 @@ public class MatchController {
         return matchSummary;
     }
 
-    @RequestMapping(value = "/players", method = RequestMethod.GET, params = "matchId")
+    @RequestMapping(value = "/squad", method = RequestMethod.GET, params = "matchId")
     public String getMatchPlayers(int matchId){
         String matchPlayers = matchService.getMatchPlayers(matchId);
         return matchPlayers;
