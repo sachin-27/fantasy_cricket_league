@@ -15,6 +15,9 @@ public class League implements Serializable {
     @Column(name = "league_name")
     private String leagueName;
 
+    @Column(name = "match_id")
+    private Long matchId;
+
     public League(){
 
     }
@@ -24,6 +27,7 @@ public class League implements Serializable {
         return "League{" +
                 "leagueId=" + leagueId +
                 ", leagueName='" + leagueName + '\'' +
+                ", matchId=" + matchId +
                 '}';
     }
 
@@ -41,5 +45,13 @@ public class League implements Serializable {
 
     public void setLeagueName(String leagueName) {
         this.leagueName = leagueName;
+    }
+
+    public Long getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(Long matchId) {
+        this.matchId = matchId;
     }
 }

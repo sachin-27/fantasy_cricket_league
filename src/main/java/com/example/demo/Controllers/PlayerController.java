@@ -1,11 +1,8 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Beans.UserTeamPlayers;
 import com.example.demo.Services.PlayerService;
 import com.example.demo.Services.UserTeamService;
-import com.example.demo.dto.UserTeamPlayerDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

@@ -22,6 +22,7 @@ public class LeagueController {
     public League addLeague(@RequestBody LeagueDto leagueDto){
         League league = new League();
         league.setLeagueName(leagueDto.getLeagueName());
+        league.setMatchId(leagueDto.getMatchId());
         League insertedLeague = leagueService.addLeague(league);
         return insertedLeague;
     }
